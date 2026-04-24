@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, useCurrentFrame, Sequence } from "remotion";
+import { AbsoluteFill, interpolate, useCurrentFrame, Sequence, Audio, staticFile } from "remotion";
 import { Easing } from "remotion";
 import { loadFont } from "@remotion/google-fonts/JetBrainsMono";
 
@@ -188,9 +188,23 @@ const FadeOutText: React.FC = () => {
   );
 };
 
+const SoundEffects: React.FC = () => {
+  return (
+    <>
+      <Audio src={staticFile("ding.wav")} volume={1} />
+      <Audio src={staticFile("ding.wav")} volume={0.8} startFrom={30} />
+      <Audio src={staticFile("ding.wav")} volume={0.8} startFrom={60} />
+      <Audio src={staticFile("ding.wav")} volume={0.8} startFrom={90} />
+      <Audio src={staticFile("ding.wav")} volume={0.8} startFrom={120} />
+      <Audio src={staticFile("ding.wav")} volume={0.8} startFrom={150} />
+    </>
+  );
+};
+
 export const ExplainerDemo: React.FC = () => {
   return (
     <div style={{ flex: 1, backgroundColor: COLORS.background }}>
+      <SoundEffects />
       <Sequence durationInFrames={60}>
         <Title />
       </Sequence>
